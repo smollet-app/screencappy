@@ -26,7 +26,7 @@
     "@types/selenium-webdriver": "^4.35.6",
     "esbuild": "latest",
     "puppeteer-core": "^25.7.0",
-    "selenium-webdriver": "^4.47.0",
+    "selenium-webdriver": "^4.49.0",
     "typescript": "latest",
     "web-ext": "^10.6.0"
   },
