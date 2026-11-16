@@ -17,7 +17,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
@@ -26,7 +26,7 @@ jobs:
       # The build renders the icons, and it renders them in a real browser.
       # Pinned the same way as the end-to-end matrix rather than relying on
       # whatever Chrome the runner image happens to ship.
-      - uses: browser-actions/setup-chrome@c785b87e244131f27c9f19c1a33e2ead956ab7ce # v1
+      - uses: browser-actions/setup-chrome@48ad923757ca74d66703209fe939badbdf80f2f4 # v2.2.0
         id: chrome
         with:
           chrome-version: stable
@@ -41,7 +41,7 @@ jobs:
           CHROME: ${{ steps.chrome.outputs.chrome-path }}
       - name: Pack
         run: cd dist && zip -r -X ../screencappy.zip .
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: screencappy-${{ github.sha }}
           path: screencappy.zip
@@ -60,19 +60,19 @@ jobs:
       matrix:
         browser: [chrome, edge, brave]
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
         with:
           bun-version: latest
 
-      - uses: browser-actions/setup-chrome@c785b87e244131f27c9f19c1a33e2ead956ab7ce # v1
+      - uses: browser-actions/setup-chrome@48ad923757ca74d66703209fe939badbdf80f2f4 # v2.2.0
         if: matrix.browser == 'chrome'
         id: chrome
         with:
           chrome-version: stable
-      - uses: browser-actions/setup-edge@e2f31d5d9f2e6d75e72516221b4df8528e6325cf # v1
+      - uses: browser-actions/setup-edge@f5108a42e9d96f94d10314c4600585d2cb281fb8 # v1
         if: matrix.browser == 'edge'
         id: edge
         with:
@@ -120,7 +120,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
